@@ -1,0 +1,20 @@
+
+@if (carregando()) {
+    <p>Carregando despesas...</p>
+} @else if (erro(); as mensagem) {
+    <p>{{ mensagem }}</p>
+} @else {
+    @for (despesa of despesas(); track despesa.id) {
+
+        <div>
+            <h3>{{ despesa.descricao }}</h3>
+
+            <p>Valor: {{ despesa.valor }}</p>
+            <p>Data: {{ despesa.dataDespesa }}</p>
+            <p>Local: {{ despesa.lugarCompra.nome }}</p>
+        </div>
+
+    } @empty {
+        <p>Nenhuma despesa encontrada.</p>
+    }
+}

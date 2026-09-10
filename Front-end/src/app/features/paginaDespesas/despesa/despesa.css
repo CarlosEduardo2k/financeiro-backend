@@ -1,0 +1,112 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #eef1f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pagina-despesas {
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.cabecalho {
+  margin-bottom: 25px;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #303030;
+}
+
+.cabecalho p {
+  margin-top: 8px;
+  color: #8a8a8a;
+}
+
+.botao-voltar {
+  border: none;
+  background: transparent;
+  color: #1976d2;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 25px;
+}
+
+.botao-voltar:hover {
+  text-decoration: underline;
+}
+
+.conteudo-despesas {
+  background-color: #ffffff;
+  padding: 24px;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.conteudo-despesas h2 {
+  margin: 0;
+  color: #303030;
+}
+
+.cssbuttons-io-button {
+  background: #00b87a;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #00b87a;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  margin: 30px auto;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #00b87a;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #00b87a;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
