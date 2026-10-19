@@ -14,4 +14,12 @@ export class DespesaService{
     listar(): Observable<Despesa[]>{
         return this.http.get<Despesa[]>('/api/despesas');
     }
+
+    cadastrar(despesa: Omit<Despesa, 'id'>): Observable<Despesa>{
+        return this.http.post<Despesa>('/api/despesas', despesa);
+    }
+
+    atualizar(id:number,despesa:Omit<Despesa,'id'>):Observable<Despesa>{
+        return this.http.put<Despesa>(`/api/despesas/${id}`,despesa);
+    }
 }

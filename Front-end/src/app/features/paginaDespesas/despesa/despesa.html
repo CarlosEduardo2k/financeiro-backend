@@ -1,27 +1,76 @@
-<main class="pagina-despesas">
+<section class="pagina-despesas">
 
   <header class="cabecalho">
-    <h1>Despesas</h1>
-    <p>Gerencie suas despesas</p>
+    <h1>Minhas despesas</h1>
   </header>
-  <section class="conteudo-despesas">
-    <h2>Minhas despesas</h2>
-  </section>
 
-  <button class="cssbuttons-io-button botao-voltar" routerLink="/">Voltar
-    <div class="icon">
-      <svg
-        height="24"
-        width="24"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none"></path>
-        <path
-          d="M7.828 13l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414L7.828 11H20v2z"
-          fill="currentColor"
-        ></path>
-      </svg>
-    </div>
-  </button>
+  <div class="layout-principal">
 
-</main>
+    <aside class="menu-lateral">
+      <h2>Menu</h2>
+
+      <button
+        type="button"
+        [class.ativo]="telaSelecionada() === 'lista'"
+        (click)="mostrarLista()">
+        Listar despesas
+      </button>
+
+      <button
+        type="button"
+        [class.ativo]="telaSelecionada() === 'cadastro'"
+        (click)="mostrarCadastro()">
+        Cadastrar despesas
+      </button>
+
+      <button
+        type="button"
+        [class.ativo]="telaSelecionada() === 'locais'"
+        (click)="mostrarLocais()">
+        Cadastrar locais de compra
+      </button>
+    </aside>
+
+    <main class="conteudo">
+
+      @if (telaSelecionada() === 'cadastro') {
+        <app-cadastro-despesa></app-cadastro-despesa>
+      }
+
+      @else if (telaSelecionada() === 'lista') {
+        <app-lista-despesas></app-lista-despesas>
+      }
+
+      @else {
+        <app-cadastro-local-compra></app-cadastro-local-compra>
+      }
+
+    </main>
+
+  </div>
+
+  <div class="rodape-pagina">
+    <button class="cssbuttons-io-button" routerLink="/">
+      Voltar
+
+      <div class="icon">
+        <svg
+          height="24"
+          width="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+
+          <path d="M0 0h24v24H0z" fill="none"></path>
+
+          <path
+            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+            fill="currentColor"
+            transform="rotate(180 12 12)">
+          </path>
+
+        </svg>
+      </div>
+    </button>
+  </div>
+
+</section>

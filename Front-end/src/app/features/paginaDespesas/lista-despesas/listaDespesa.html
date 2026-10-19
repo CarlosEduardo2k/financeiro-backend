@@ -1,20 +1,132 @@
+<div class="lista-despesas">
 
-@if (carregando()) {
+  <h2>Despesas cadastradas</h2>
+
+  @if (carregando()) {
     <p>Carregando despesas...</p>
-} @else if (erro(); as mensagem) {
+  } @else if (erro(); as mensagem) {
     <p>{{ mensagem }}</p>
-} @else {
-    @for (despesa of despesas(); track despesa.id) {
+  } @else {
 
-        <div>
-            <h3>{{ despesa.descricao }}</h3>
+    @if (despesaEmEdicao(); as despesa) {
 
-            <p>Valor: {{ despesa.valor }}</p>
-            <p>Data: {{ despesa.dataDespesa }}</p>
-            <p>Local: {{ despesa.lugarCompra.nome }}</p>
+      <!-- Formulário de edição -->
+      <div class="formulario-edicao">
+
+        <h3>Editar despesa</h3>
+
+        <div class="campo">
+          <label for="descricao">Descrição</label>
+          <input
+            id="descricao"
+            type="text"
+            [(ngModel)]="descricao"
+            maxlength="150"
+          />
         </div>
 
-    } @empty {
+        <div class="campo">
+          <label for="valor">Valor (R$)</label>
+          <input
+            id="valor"
+            type="number"
+            [(ngModel)]="valor"
+            min="0.01"
+            step="0.01"
+          />
+        </div>
+
+        <div class="campo">
+          <label for="dataDespesa">Data da despesa</label>
+          <input
+            id="dataDespesa"
+            type="date"
+            [(ngModel)]="dataDespesa"
+          />
+        </div>
+
+        <div class="campo">
+          <label for="localCompra">Local de compra</label>
+          <select
+            id="localCompra"
+            [(ngModel)]="localCompraId"
+          >
+            <option [ngValue]="null">Selecione um local</option>
+
+            @for (local of locaisCompra(); track local.id) {
+              <option [ngValue]="local.id">
+                {{ local.nome }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="acoes-formulario">
+          <button
+            type="button"
+            class="botao-salvar"
+            (click)="salvarEdicao()"
+          >
+            Salvar alterações
+          </button>
+
+          <button
+            type="button"
+            class="botao-cancelar"
+            (click)="cancelarEdicao()"
+          >
+            Cancelar
+          </button>
+        </div>
+
+      </div>
+
+    } @else {
+
+      <!-- Listagem de despesas -->
+      @if (despesas().length === 0) {
         <p>Nenhuma despesa encontrada.</p>
+      } @else {
+
+        <div class="tabela-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Local de compra</th>
+                <th>Valor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (despesa of despesas(); track despesa.id) {
+                <tr>
+                  <td>{{ despesa.dataDespesa | date:'dd/MM/yyyy':'UTC' }}</td>
+                  <td>{{ despesa.descricao }}</td>
+                  <td>{{ despesa.lugarCompra.nome }}</td>
+                  <td>{{ despesa.valor | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+
+                  <td>
+                    <button
+                      type="button"
+                      class="botao-editar"
+                      (click)="editar(despesa)"
+                    >
+                      Editar
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+      }
+
     }
-}
+
+  }
+
+</div>

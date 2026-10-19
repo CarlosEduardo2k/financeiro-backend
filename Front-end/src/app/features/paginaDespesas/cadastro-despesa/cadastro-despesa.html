@@ -1,0 +1,51 @@
+
+<section class="cadastro-despesa">
+  <h2>Nova despesa</h2>
+
+  <div class="campo">
+    <label for="descricao">Descrição</label>
+    <input
+      id="descricao"
+      type="text"
+      placeholder="Digite a descrição da despesa"[(ngModel)]="descricao">
+  </div>
+  
+<div class="campo">
+  <label for="valor">Valor (R$)</label>
+
+  <input
+    id="valor"
+    type="number"
+    min="0.01"
+    step="0.01"
+    placeholder="0.00"[(ngModel)]="valor">
+</div>
+
+<div class="campo">
+  <label for="dataDespesa">Data da despesa</label>
+
+  <input
+    id="dataDespesa"
+    type="date"[(ngModel)]="dataDespesa">
+</div>
+
+<div class="campo">
+  <label for="localCompra">Local de compra</label>
+
+  <select id="localCompra"[(ngModel)]="localCompraId">
+    <option [ngValue]="">Selecione um local</option>
+
+    @for (local of locaisCompra(); track local.id) {
+      <option [ngValue]="local.id">
+        {{ local.nome }}
+      </option>
+    }
+  </select>
+</div>
+
+<div class="acoes">
+  <button type="button"(click)="cadastrar()">Cadastrar</button>
+  <button type="button">Cancelar</button>
+</div>
+
+</section>

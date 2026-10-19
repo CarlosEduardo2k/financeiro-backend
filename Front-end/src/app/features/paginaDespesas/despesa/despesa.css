@@ -1,3 +1,4 @@
+
 :host {
   display: block;
   min-height: 100vh;
@@ -10,50 +11,88 @@
 
 .pagina-despesas {
   min-height: 100vh;
-  padding: 30px;
-}
-
-.cabecalho {
-  margin-bottom: 25px;
-}
-
-.cabecalho h1 {
-  margin: 0;
-  font-size: 28px;
-  color: #303030;
-}
-
-.cabecalho p {
-  margin-top: 8px;
-  color: #8a8a8a;
-}
-
-.botao-voltar {
-  border: none;
-  background: transparent;
-  color: #1976d2;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 8px 0;
-  margin-bottom: 25px;
-}
-
-.botao-voltar:hover {
-  text-decoration: underline;
-}
-
-.conteudo-despesas {
-  background-color: #ffffff;
   padding: 24px;
-  border: 1px solid #e7e7e7;
+}
+
+/* Cabeçalho */
+.cabecalho {
+  max-width: 1200px;
+  margin: 0 auto 28px;
+  padding: 20px 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.conteudo-despesas h2 {
+.cabecalho h1 {
   margin: 0;
-  color: #303030;
+  font-size: 26px;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* Menu e formulário */
+.layout-principal {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 600px);
+  justify-content: center;
+  align-items: start;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Menu lateral */
+.menu-lateral {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.menu-lateral h2 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: #374151;
+}
+
+.menu-lateral button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px;
+  text-align: left;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #374151;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu-lateral button:hover {
+  background-color: #f3f4f6;
+}
+
+.menu-lateral button.ativo {
+  background-color: #e6f4ec;
+  color: #126b3c;
+  font-weight: 600;
+}
+
+/* Área do formulário */
+.conteudo {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Botão Voltar */
+.rodape-pagina {
+  display: flex;
+  justify-content: center;
+  margin: 28px auto 0;
 }
 
 .cssbuttons-io-button {
@@ -62,6 +101,7 @@
   font-family: inherit;
   padding: 0.35em;
   padding-left: 1.2em;
+  padding-right: 3.3em;
   font-size: 17px;
   font-weight: 500;
   border-radius: 0.9em;
@@ -73,9 +113,7 @@
   overflow: hidden;
   position: relative;
   height: 2.8em;
-  padding-right: 3.3em;
   cursor: pointer;
-  margin: 30px auto;
 }
 
 .cssbuttons-io-button .icon {
@@ -109,4 +147,25 @@
 
 .cssbuttons-io-button:active .icon {
   transform: scale(0.95);
+}
+
+/* Telas menores */
+@media (max-width: 700px) {
+  .pagina-despesas {
+    padding: 12px;
+  }
+
+  .cabecalho {
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .layout-principal {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .menu-lateral {
+    padding: 14px;
+  }
 }

@@ -6,7 +6,7 @@ import { Despesa } from './features/paginaDespesas/despesa/despesa';
 
 
 @Component({
-  imports: [RouterOutlet,RouterLink ,Despesa],
+  imports: [RouterOutlet],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

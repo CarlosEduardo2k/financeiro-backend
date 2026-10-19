@@ -1,0 +1,14 @@
+<section class="cadastro-local">
+    <h2> Novo Local De Compra</h2>
+    <div class="campo">
+        <label for="nome">Nome Do Local</label>
+        <input id="nome"type="text"placeholder="Digite o Nome Do Local" [(ngModel)]="nome">
+    </div>
+    <div class="acoes">
+        <button type="button" (click)="cadastrar()">Cadastrar</button>
+        <button type="button" (click)="cancelar()">Cancelar</button> 
+    </div>
+    @if (mensagem()) {
+            <p class="mensagem">{{mensagem()}}</p>
+        }
+</section>
